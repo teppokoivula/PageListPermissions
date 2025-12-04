@@ -20,7 +20,7 @@ class ProcessPageListPermissions extends Process {
             'title' => 'Page List Permissions',
             'summary' => 'This module provides UI for Page List Permissions',
             'author' => 'Teppo Koivula',
-            'version' => '0.3.1',
+            'version' => '0.3.2',
             'singular' => true,
             'autoload' => false,
             'requires' => ['PageListPermissions', 'ProcessUserGroups'],
@@ -143,8 +143,8 @@ class ProcessPageListPermissions extends Process {
         if ($id && is_array($data) && count($data)) {
             $page = wire('pages')->get($id);
             if ($page->id) {
-                $page->view_groups = new PageArray();
-                $page->edit_groups = new PageArray();
+                $page->view_groups->removeAll();
+                $page->edit_groups->removeAll();
                 foreach ($data as $group_id => $perms) {
                     $group_id_int = (int) $group_id;
                     if ($group_id_int) $group = $this->pages->get("template=user-group, id=$group_id_int");
