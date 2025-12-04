@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 
 /**
  * Page List Permissions
@@ -8,13 +8,6 @@
  * 
  * @author Teppo Koivula
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License, version 2
- * 
- * ProcessWire 2.x 
- * Copyright (C) 2010 by Ryan Cramer 
- * Licensed under GNU/GPL v2, see LICENSE.TXT
- * 
- * http://processwire.com
- *
  */
 class PageListPermissions extends WireData implements Module {
 
@@ -24,23 +17,22 @@ class PageListPermissions extends WireData implements Module {
      * @return array
      */
     public static function getModuleInfo() {
-        return array(
+        return [
             'title' => 'Page List Permissions',
             'summary' => 'Enable viewing and editing permissions set by User Groups module via Page List',
             'author' => 'Teppo Koivula',
-            'version' => '0.4.1',
+            'version' => '0.4.2',
             'singular' => true,
             'autoload' => true,
             'requires' => 'ProcessUserGroups',
             'installs' => 'ProcessPageListPermissions',
-        );
+        ];
     }
 
     /**
      * Initialization function
      *
      * This function attachs required hooks.
-     *
      */
     public function init() {
         if ($this->user->hasPermission('user-admin')) {
@@ -68,7 +60,6 @@ class PageListPermissions extends WireData implements Module {
         $trash = $page->isTrash() ? " trash" : "";
         $icon = "<i class='access-management{$trash} fa fa-{$icon} icon-{$icon} status-{$status}' data-page='{$page}'></i>";
         $event->return .= $icon;
-
     }
 
     /**
@@ -84,14 +75,14 @@ class PageListPermissions extends WireData implements Module {
         // inject settings and translations
         $process = $this->modules->getModuleID("ProcessPageListPermissions");
         $processPage = $this->pages->get("process=$process");
-        $this->config->js('PageListPermissions', array(
-            'i18n' => array(
+        $this->config->js('PageListPermissions', [
+            'i18n' => [
                 'ajaxError' => __("An error occurred, please try again"),
                 'notAllowed' => __("Not allowed for this group"),
-            ),
+            ],
             'trashPageID' => $this->config->trashPageID,
             'processPage' => $processPage->url(),
-        ));
+        ]);
 
         // inject scripts and styles
         $class = $this->className();
@@ -99,7 +90,5 @@ class PageListPermissions extends WireData implements Module {
         $version = (int) $info['version'];
         if (is_file($this->config->paths->$class . "$class.js")) $this->config->scripts->add($this->config->urls->$class . "$class.js?v=$version");
         if (is_file($this->config->paths->$class . "$class.css")) $this->config->styles->add($this->config->urls->$class . "$class.css?v=$version");
-
     }
-
 }

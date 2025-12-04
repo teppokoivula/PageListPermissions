@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 
 /**
  * Process Page List Permissions
@@ -7,13 +7,6 @@
  * 
  * @author Teppo Koivula
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License, version 2
- *
- * ProcessWire 2.x
- * Copyright (C) 2010 by Ryan Cramer
- * Licensed under GNU/GPL v2, see LICENSE.TXT
- *
- * http://processwire.com
- *
  */
 class ProcessPageListPermissions extends Process {
     
@@ -23,32 +16,34 @@ class ProcessPageListPermissions extends Process {
      * @return array
      */
     public static function getModuleInfo() {
-        return array(
+        return [
             'title' => 'Page List Permissions',
             'summary' => 'This module provides UI for Page List Permissions',
             'author' => 'Teppo Koivula',
-            'version' => 28,
+            'version' => '0.3.0',
             'singular' => true,
             'autoload' => false,
-            'requires' => array('PageListPermissions', 'ProcessUserGroups'),
+            'requires' => ['PageListPermissions', 'ProcessUserGroups'],
             'permission' => 'user-admin',
-        );
+        ];
     }
 
     /**
      * Name of admin page used by this module
      *
+     * @var string
      */
     const PAGE_NAME = 'page-list-access-management';
 
     /**
      * Names of groups that can never gain edit permission
      *
+     * @var array
      */
-    private $edit_disabled_for = array(
+    private $edit_disabled_for = [
         'everyone',
         'logged',
-    );
+    ];
 
     /**
      * Executed when a page with this Process assigned is accessed
@@ -137,17 +132,14 @@ class ProcessPageListPermissions extends Process {
         $out .= $submit->render();
 
         return "<form action='$action' method='POST'>$out</form>";
-        
     }
 
     /**
      * Save permissions for target page
-     *
      */
     public function ___executeSave() {
-        
         $id = (int) $this->input->post->id;
-        $data = json_decode($this->input->post->data);
+        $data = json_decode($this->input->post->data, true);
         if ($id && count($data)) {
             $page = wire('pages')->get($id);
             if ($page->id) {
@@ -157,9 +149,9 @@ class ProcessPageListPermissions extends Process {
                     $group_id_int = (int) $group_id;
                     if ($group_id_int) $group = $this->pages->get("template=user-group, id=$group_id_int");
                     if (!$group_id_int || !$group->id) throw new WireException("Invalid group: $group_id");
-                    if ($perms->view) {
+                    if ($perms['view']) {
                         $page->view_groups->add($group);
-                        if ($perms->edit && !in_array($group->name, $this->edit_disabled_for)) {
+                        if ($perms['edit'] && !in_array($group->name, $this->edit_disabled_for)) {
                             $page->edit_groups->add($group);
                         }
                     }
@@ -171,24 +163,22 @@ class ProcessPageListPermissions extends Process {
                 // generate JSON output for JavaScript AJAX POST request
                 $icon = count($page->view_groups) || count($page->edit_groups) ? 'lock' : 'unlock-alt';
                 $status = $page->manage_access ? "active" : "disabled";
-                $return = array(
+                $return = [
                     'data' => $this->execute($page->id),
                     'classes' => "status-{$status} fa-{$icon} icon-{$icon}",
-                );
+                ];
                 header('Content-type: application/json');
                 die(json_encode($return));
             }
         } else {
             throw new WireException("Invalid POST data");
         }
-
     }
 
     /**
      * Called only when this module is installed
      *
      * Creates new page with this Process module assigned.
-     *
      */
     public function ___install() {
 
@@ -216,7 +206,6 @@ class ProcessPageListPermissions extends Process {
      * Called only when this module is uninstalled
      *
      * Removes page associated with this Process module.
-     *
      */
     public function ___uninstall() {
 
@@ -230,7 +219,5 @@ class ProcessPageListPermissions extends Process {
             $this->message("Deleting Page: {$page->path}"); 
             $page->delete();
         }
-
     }
-    
 }
