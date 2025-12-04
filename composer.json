@@ -1,0 +1,22 @@
+{
+    "name": "teppokoivula/page-list-permissions",
+    "type": "pw-module",
+    "description": "Optional Page List UI for User Groups module",
+    "keywords": [
+        "module",
+        "processwire"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Teppo Koivula",
+            "homepage": "https://github.com/teppokoivula",
+            "email": "teppo.koivula@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "processwire/processwire": ">=3.0.112",
+        "wireframe-framework/processwire-composer-installer": "^1.0.0"
+    }
+}
