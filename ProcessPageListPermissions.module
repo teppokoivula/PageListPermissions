@@ -20,7 +20,7 @@ class ProcessPageListPermissions extends Process {
             'title' => 'Page List Permissions',
             'summary' => 'This module provides UI for Page List Permissions',
             'author' => 'Teppo Koivula',
-            'version' => '0.3.2',
+            'version' => '0.3.3',
             'singular' => true,
             'autoload' => false,
             'requires' => ['PageListPermissions', 'ProcessUserGroups'],
@@ -140,7 +140,7 @@ class ProcessPageListPermissions extends Process {
     public function ___executeSave() {
         $id = (int) $this->input->post->id;
         $data = json_decode($this->input->post->data, true);
-        if ($id && is_array($data) && count($data)) {
+        if ($id && is_array($data)) {
             $page = wire('pages')->get($id);
             if ($page->id) {
                 $page->view_groups->removeAll();
@@ -156,8 +156,8 @@ class ProcessPageListPermissions extends Process {
                         }
                     }
                 }
-                // enable manage_access if groups are/were selected
-                if (count($page->view_groups) || count($page->edit_groups)) $page->manage_access = 1;
+                // enable/disable manage_access based on whether groups are selected
+                $page->manage_access = count($page->view_groups) || count($page->edit_groups) ? 1 : 0;
                 // save page (triggers rebuilding of permissions)
                 $page->save();
                 // generate JSON output for JavaScript AJAX POST request
