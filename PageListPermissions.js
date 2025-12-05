@@ -86,6 +86,9 @@ $(function() {
             clones[viewPage].find('i.access-management:first').removeClass('open');
             $('.PageListID' + viewPage + ' > a:first').replaceWith(clones[viewPage]);
             clones[viewPage] = null;
+        } else {
+            // no clone exists, remove 'open' class directly from the icon in DOM
+            $('.PageListID' + viewPage + ' i.access-management:first').removeClass('open');
         }
         // hide (and unset) view object (grab $parent first)
         var $parent = $view.parents('.PageListItem:first');
@@ -323,9 +326,8 @@ $(function() {
                     .addClass(data.classes)
                     .parents('.PageListItem:first')
                         .addClass('saved');
-                // copy of current page list link is stored in clones; make sure
-                // it doesn't contain conflicting access management toggle class
-                clones[$view.data('page')].find('i:first').attr('class', $i.attr('class'));
+                // delete stale clone so closeView keeps the updated DOM icon
+                delete clones[$view.data('page')];
                 $view.find('button').attr('disabled', 'disabled');
                 closeView();
                 $('body').removeClass('access-management-loading');
