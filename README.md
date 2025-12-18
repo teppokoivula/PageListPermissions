@@ -17,7 +17,7 @@ List Permissions will be installed automatically.
 ## Requirements
 
 * User Groups module: https://github.com/apeisa/UserGroups
-* ProcessWire 2.3.14+ (current "dev" branch)
+* ProcessWire 3.0.112+
 
 ## License
 
