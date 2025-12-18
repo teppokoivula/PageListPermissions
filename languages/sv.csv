@@ -1,0 +1,12 @@
+en,sv,description,file,hash
+"An error occurred, please try again","Ett fel uppstod, försök igen",,site/modules/PageListPermissions/PageListPermissions.module,19c070437a65b719fa440f2031ed82bf
+"Not allowed for this group","Inte tillåtet för denna grupp",,site/modules/PageListPermissions/PageListPermissions.module,6eeb3e0969be5e1096576bd9356672af
+"Permissions for this page are defined at %s. Click to define here instead.","Behörigheter för denna sida definieras på %s. Klicka för att definiera dem här istället.",,site/modules/PageListPermissions/ProcessPageListPermissions.module,e61a38ffdcc51db45bc9f031c51276ef
+"No permissions defined for this page. Click to define permissions now.","Inga behörigheter definierade för denna sida. Klicka för att definiera behörigheter nu.",,site/modules/PageListPermissions/ProcessPageListPermissions.module,665dfc335155e8c558ba9508f886dc22
+Group,Grupp,,site/modules/PageListPermissions/ProcessPageListPermissions.module,03937134cedab9078be39a77ee3a48a0
+View,Visa,,site/modules/PageListPermissions/ProcessPageListPermissions.module,4351cfebe4b61d8aa5efa1d020710005
+Edit,Redigera,,site/modules/PageListPermissions/ProcessPageListPermissions.module,7dce122004969d56ae2e0245cb754d35
+"Not allowed for this group","Inte tillåtet för denna grupp",,site/modules/PageListPermissions/ProcessPageListPermissions.module,6eeb3e0969be5e1096576bd9356672af
+"View permission is required","Visningsbehörighet krävs",,site/modules/PageListPermissions/ProcessPageListPermissions.module,e8df81fc947e0efb37a656f2707e871d
+"Save changes","Spara ändringar",,site/modules/PageListPermissions/ProcessPageListPermissions.module,daa6b483e9f6ca081ec7e0b4a352f9e9
+"Unsaved changes will be lost. Are you sure you want to close the edit window?","Osparade ändringar kommer att förloras. Är du säker på att du vill stänga redigeringsfönstret?",,site/modules/PageListPermissions/ProcessPageListPermissions.module,6d08f47edd67c0e400e1c5964e33adb3

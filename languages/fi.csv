@@ -1,0 +1,12 @@
+en,fi,description,file,hash
+"An error occurred, please try again","Tapahtui virhe, yritä uudelleen",,site/modules/PageListPermissions/PageListPermissions.module,19c070437a65b719fa440f2031ed82bf
+"Not allowed for this group","Ei sallittu tälle ryhmälle",,site/modules/PageListPermissions/PageListPermissions.module,6eeb3e0969be5e1096576bd9356672af
+"Permissions for this page are defined at %s. Click to define here instead.","Tämän sivun käyttöoikeudet on määritelty sivulla %s. Klikkaa määrittääksesi ne tässä.",,site/modules/PageListPermissions/ProcessPageListPermissions.module,e61a38ffdcc51db45bc9f031c51276ef
+"No permissions defined for this page. Click to define permissions now.","Tälle sivulle ei ole määritelty käyttöoikeuksia. Klikkaa määrittääksesi ne nyt.",,site/modules/PageListPermissions/ProcessPageListPermissions.module,665dfc335155e8c558ba9508f886dc22
+Group,Ryhmä,,site/modules/PageListPermissions/ProcessPageListPermissions.module,03937134cedab9078be39a77ee3a48a0
+View,Katselu,,site/modules/PageListPermissions/ProcessPageListPermissions.module,4351cfebe4b61d8aa5efa1d020710005
+Edit,Muokkaus,,site/modules/PageListPermissions/ProcessPageListPermissions.module,7dce122004969d56ae2e0245cb754d35
+"Not allowed for this group","Ei sallittu tälle ryhmälle",,site/modules/PageListPermissions/ProcessPageListPermissions.module,6eeb3e0969be5e1096576bd9356672af
+"View permission is required","Katseluoikeus on pakollinen",,site/modules/PageListPermissions/ProcessPageListPermissions.module,e8df81fc947e0efb37a656f2707e871d
+"Save changes","Tallenna muutokset",,site/modules/PageListPermissions/ProcessPageListPermissions.module,daa6b483e9f6ca081ec7e0b4a352f9e9
+"Unsaved changes will be lost. Are you sure you want to close the edit window?","Tallentamattomat muutokset menetetään. Haluatko varmasti sulkea muokkausikkunan?",,site/modules/PageListPermissions/ProcessPageListPermissions.module,6d08f47edd67c0e400e1c5964e33adb3
